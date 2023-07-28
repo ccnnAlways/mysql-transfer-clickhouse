@@ -1,0 +1,12 @@
+mysql:
+  host: 127.0.0.1
+  port: 3306
+  user: root
+  passwd: 123456
+  database: mes
+clickhouse:
+  host: 192.168.1.31
+  port: 9000
+  user: always
+  passwd: 123456
+  database: mes
