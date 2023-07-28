@@ -47,7 +47,7 @@
 1. `go mod tidy`
 2. 注释掉`main.go`中的其他方法，只保留`transfer.GenTransferCode()`
 
-3. 配置配置文件
+3. 配置配置文件`etc/config.yml`
 4. `go run main.go`
 5. 注释掉 `transfer.GenTransferCode()`，解开迁移的代码注释`transfer.Transfer()`
 6. `go run main.go`
