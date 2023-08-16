@@ -99,7 +99,7 @@ func getStructs(files []fs.FileInfo) (structs []string, err error) {
 // getStructFromFile 从文件中获取所有的结构体名称
 func getStructFromFile(fileName string) (structs []string, err error) {
 
-	f, _ := ioutil.ReadFile(modelPath + "/" + fileName)
+	f, _ := os.ReadFile(modelPath + "/" + fileName)
 	fs := token.NewFileSet()
 	p, err := parser.ParseFile(fs, fileName, f, parser.ParseComments)
 	if err != nil {
@@ -125,6 +125,7 @@ func exeCMD() error {
 	dsn := mysql.GetMsqlDsn()
 
 	cmd := exec.Command("gentool", "-dsn", dsn, "-onlyModel", "-outPath", modelPath)
+	fmt.Println(cmd.String())
 	output, err := cmd.CombinedOutput()
 
 	if err != nil {
@@ -143,7 +144,7 @@ func exeCMD() error {
 
 	defer f.Close()
 
-	if err = ioutil.WriteFile(logPath, output, 0666); err != nil {
+	if err = os.WriteFile(logPath, output, 0666); err != nil {
 		fmt.Println("cmd 日志写入文件发生异常 = ", err)
 		return err
 	}
